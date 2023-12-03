@@ -2,6 +2,7 @@ let numberOfDrums = document.querySelectorAll('.drum').length;
 
 let button = document.querySelectorAll('.drum');
 
+// Button Press
 for (let i=0; i < numberOfDrums; i++) {
     button[i].addEventListener('click', function() {
         let buttonValue = this.innerHTML
@@ -9,10 +10,12 @@ for (let i=0; i < numberOfDrums; i++) {
     });
 }
 
+// Keyboard Press
 document.addEventListener("keydown", function(event) {
     playSound(event.key)
 })
 
+// This function plays the sound
 function playSound(key) {
     switch (key) {
         case "w":
