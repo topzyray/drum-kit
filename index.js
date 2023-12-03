@@ -7,12 +7,14 @@ for (let i=0; i < numberOfDrums; i++) {
     button[i].addEventListener('click', function() {
         let buttonValue = this.innerHTML
         playSound(buttonValue);
+        buttonAnimator(buttonValue);
     });
 }
 
 // Keyboard Press
 document.addEventListener("keydown", function(event) {
-    playSound(event.key)
+    playSound(event.key);
+    buttonAnimator(event.key);
 })
 
 // This function plays the sound
@@ -49,4 +51,15 @@ function playSound(key) {
         default:
             console.log(`The key ${key} is not assigned to any sound!`)
     }
+}
+
+// Button animation funciton
+function buttonAnimator(currentKey) {
+    let activeButton = document.querySelector(`.${currentKey}`);
+    activeButton.classList.add('pressed')
+
+    // Setting clicking timeout
+    setTimeout(() => {
+        activeButton.classList.remove('pressed')
+    }, 100)
 }
